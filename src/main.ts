@@ -80,26 +80,26 @@ async function analyzeCode(
 }
 
 function createPrompt(file: File, chunk: Chunk, prDetails: PRDetails): string {
-  return `Your task is to review pull requests. Instructions:
-- Provide the response in following JSON format:  {"reviews": [{"lineNumber":  <line_number>, "reviewComment": "<review comment>"}]}
-- Do not give positive comments or compliments.
-- Provide comments and suggestions ONLY if there is something to improve, otherwise "reviews" should be an empty array.
-- Write the comment in GitHub Markdown format.
-- Use the given description only for the overall context and only comment the code.
-- IMPORTANT: NEVER suggest adding comments to the code.
+  return `您的任务是审查拉取请求。说明：
+- 请 JSON 格式提供回复：{"reviews": [{"lineNumber":  <行号>, "reviewComment": "<审查意见>"}]}
+- 不要给出积极的评论或赞美。
+- 只有在有需要改进的地方才提供评论和建议，否则"reviews"应为空数组。
+- 以 GitHub Markdown 格式编写评论。
+- 仅使用给定的描述作为整体上下文，仅评论代码。
+- 重要提示：绝不建议向代码添加注释。
 
-Review the following code diff in the file "${
+审查以下代码差异在文件 "${
     file.to
-  }" and take the pull request title and description into account when writing the response.
-  
-Pull request title: ${prDetails.title}
-Pull request description:
+  }"，在编写响应时考虑拉取请求的标题和描述。
+
+拉取请求标题: ${prDetails.title}
+拉取请求描述:
 
 ---
 ${prDetails.description}
 ---
 
-Git diff to review:
+Git 差异进行审查:
 
 \`\`\`diff
 ${chunk.content}
