@@ -12,7 +12,8 @@ const OPENAI_API_MODEL: string = core.getInput("OPENAI_API_MODEL");
 const octokit = new Octokit({ auth: GITHUB_TOKEN });
 
 const openai = new OpenAI({
-  apiKey: OPENAI_API_KEY,
+  baseURL:"https://api.gpt.ge/v1",
+  apiKey: OPENAI_API_KEY
 });
 
 interface PRDetails {
