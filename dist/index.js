@@ -108,7 +108,7 @@ function analyzeCode(parsedDiff, prDetails) {
 }
 function createPrompt(file, chunk, prDetails) {
     return `您的任务是审查拉取请求。说明：
-- 请 JSON 格式提供回复：{"reviews": [{"lineNumber":  <行号>, "reviewComment": "<审查意见>"}]}
+- 请 JSON 格式提供回复：{"reviews": [{"lineNumber":  "<line_number>", "reviewComment": "<review comment>"}]}
 - 不要给出积极的评论或赞美。
 - 只有在有需要改进的地方才提供评论和建议，否则"reviews"应为空数组。
 - 以 GitHub Markdown 格式编写评论。
